@@ -974,3 +974,14 @@ The product should ultimately make the user's experience of achieving goals feel
 
 That is the fundamental product experience.
 
+---
+
+# **Appendix — Tooling Note: Cursor IDE (added 2026-09-27)**
+
+**Decision:** The repo stays editor-agnostic. Primary build continues in the current setup (OpenCode + GitHub, Next.js local-first stack). Cursor IDE is **optional** for local editing — not required, not locked in.
+
+**Why:**
+- No Cursor-specific config or dependency is committed (`.cursor/` is gitignored like `.vscode/` and `.idea/`), so contributors can use any editor.
+- The stack (Next.js + SQLite/Prisma + Auth.js + local `./storage/`) runs locally regardless of editor; nothing in Phase 0–7 requires Cursor.
+- Avoids tool lock-in and keeps the PRD spec unchanged — this note is informational only and does not alter product requirements.
+
