@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plannly — Design Preview v0.1</title>
+<style>
+  :root {
+    /* Palette: calm, warm, non-clinical */
+    --ink: #1e2a32;
+    --ink-soft: #4a5a64;
+    --paper: #faf8f4;
+    --card: #ffffff;
+    --sage: #4f7c6f;
+    --sage-deep: #38604f;
+    --sage-wash: #e7efe9;
+    --sun: #e8a838;
+    --sun-wash: #fbf0d9;
+    --clay: #c96f4a;
+    --line: #e5ded2;
+    --radius: 14px;
+    --font: "Inter", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: var(--font); color: var(--ink); background: var(--paper);
+    padding: 40px 24px 64px; line-height: 1.5;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  .eyebrow { color: var(--sage-deep); font-weight: 700; letter-spacing: .12em; font-size: 12px; text-transform: uppercase; }
+  h1 { font-size: 40px; line-height: 1.1; margin: 8px 0 4px; letter-spacing: -0.02em; }
+  .tagline { color: var(--ink-soft); font-size: 18px; margin: 0 0 28px; }
+  section.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 24px; margin: 20px 0; box-shadow: 0 1px 2px rgba(30,42,50,.05);
+  }
+  section.card h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .08em; color: var(--sage-deep); margin: 0 0 14px; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .swatch { border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+  .swatch .chip { height: 64px; }
+  .swatch .meta { padding: 8px 10px; font-size: 13px; }
+  .swatch .meta b { display: block; font-size: 13px; }
+  .swatch .meta span { color: var(--ink-soft); font-family: monospace; font-size: 12px; }
+  .type-scale h1.s, .type-scale h2.s, .type-scale p.s { margin: 6px 0; }
+  .t-h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; }
+  .t-h2 { font-size: 22px; font-weight: 700; }
+  .t-body { font-size: 16px; }
+  .t-small { font-size: 13px; color: var(--ink-soft); }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn {
+    font-family: var(--font); font-weight: 700; font-size: 15px; cursor: pointer;
+    border-radius: 999px; padding: 12px 22px; border: 1px solid transparent;
+    transition: transform .05s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--sage); color: #fff; box-shadow: 0 2px 8px rgba(79,124,111,.35); }
+  .btn-primary:hover { background: var(--sage-deep); }
+  .btn-secondary { background: #fff; color: var(--sage-deep); border-color: var(--sage); }
+  .btn-secondary:hover { background: var(--sage-wash); }
+  .btn-quiet { background: var(--sun-wash); color: var(--ink); border-color: var(--line); }
+  .field { margin: 10px 0; }
+  .field label { display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .input, .textarea {
+    width: 100%; font-family: var(--font); font-size: 15px; color: var(--ink);
+    background: #fff; border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 14px;
+    outline: none; transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .input:focus, .textarea:focus { border-color: var(--sage); box-shadow: 0 0 0 3px var(--sage-wash); }
+  .hint { font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
+  .today { border-left: 6px solid var(--sage); }
+  .today .goal-link { display: inline-block; font-size: 12px; font-weight: 700; color: var(--sage-deep); background: var(--sage-wash); border-radius: 999px; padding: 3px 10px; margin-bottom: 8px; }
+  .check { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-top: 1px dashed var(--line); }
+  .box { width: 22px; height: 22px; border-radius: 7px; border: 2px solid var(--sage); flex: none; margin-top: 2px; }
+  footer { color: var(--ink-soft); font-size: 13px; margin-top: 28px; }
+  code { font-family: monospace; background: #f1ece1; padding: 1px 6px; border-radius: 6px; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Plannly · Design Preview v0.1</div>
+  <h1>Big goals. Small steps. Real progress.</h1>
+  <p class="tagline">Calm, encouraging, non-judgmental — clarity over density.</p>
+
+  <section class="card">
+    <h2>Colors</h2>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#1e2a32"></div><div class="meta"><b>Ink</b><span>#1E2A32</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#4a5a64"></div><div class="meta"><b>Ink Soft</b><span>#4A5A64</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#faf8f4"></div><div class="meta"><b>Paper</b><span>#FAF8F4</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#4f7c6f"></div><div class="meta"><b>Sage (primary)</b><span>#4F7C6F</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#38604f"></div><div class="meta"><b>Sage Deep</b><span>#38604F</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#e7efe9"></div><div class="meta"><b>Sage Wash</b><span>#E7EFE9</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#e8a838"></div><div class="meta"><b>Sun (accent)</b><span>#E8A838</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#c96f4a"></div><div class="meta"><b>Clay (caution)</b><span>#C96F4A</span></div></div>
+    </div>
+  </section>
+
+  <section class="card type-scale">
+    <h2>Typography — Inter / system stack</h2>
+    <div class="t-h1">Heading — What matters today?</div>
+    <div class="t-h2">Subheading — Complete a 20-minute workout</div>
+    <div class="t-body">Body — Every small action shows its parent goal and what comes next, so today never feels disconnected.</div>
+    <div class="t-small">Small / hint — Contributes to: Establish a consistent exercise routine · Next: Put on workout clothes</div>
+  </section>
+
+  <section class="card">
+    <h2>Buttons</h2>
+    <div class="btn-row">
+      <button class="btn btn-primary">Complete tiny step</button>
+      <button class="btn btn-secondary">Break it down</button>
+      <button class="btn btn-quiet">Not today</button>
+    </div>
+    <p class="hint">Primary = forward action · Secondary = clarify · Quiet = defer without guilt.</p>
+  </section>
+
+  <section class="card">
+    <h2>Sample input — new goal</h2>
+    <div class="field">
+      <label for="goal">What do you want to accomplish?</label>
+      <input id="goal" class="input" type="text" value="I want to launch my online coaching business this year.">
+      <div class="hint">Natural language — no structuring needed. Plannly clarifies and proposes a plan.</div>
+    </div>
+    <div class="field">
+      <label for="note">Anything we should know? (optional)</label>
+      <textarea id="note" class="textarea" rows="2">I only have ~5 hours a week. Weekends are best.</textarea>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary">Create my plan</button>
+    </div>
+  </section>
+
+  <section class="card today">
+    <h2>Sample — Today focus card</h2>
+    <span class="goal-link">Goal · Establish a consistent exercise routine</span>
+    <div class="t-h2">Today: complete a 20-minute workout</div>
+    <div class="check"><div class="box"></div><div><b>Next tiny step:</b> Put on workout clothes <span class="t-small">· ~2 min · quick win</span></div></div>
+    <div class="check"><div class="box"></div><div>Fill water bottle and pick a playlist <span class="t-small">· ~3 min</span></div></div>
+  </section>
+
+  <footer>Plannly design preview <code>v0.1</code> · palette, type, buttons, inputs. Personality: calm · clear · encouraging.</footer>
+</div>
+</body>
+</html>
