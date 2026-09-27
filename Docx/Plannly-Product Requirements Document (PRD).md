@@ -985,3 +985,30 @@ That is the fundamental product experience.
 - The stack (Next.js + SQLite/Prisma + Auth.js + local `./storage/`) runs locally regardless of editor; nothing in Phase 0–7 requires Cursor.
 - Avoids tool lock-in and keeps the PRD spec unchanged — this note is informational only and does not alter product requirements.
 
+---
+
+# **Appendix — Requested Changes (added 2026-09-27, pending implementation)**
+
+Recorded verbatim from product owner. Spec body above is unchanged; these items are to be designed and built.
+
+## **1. Buttons — remove the defer option**
+
+- Remove the "defer" choice (e.g. the "Not today" / quiet button in `design.html`).
+- Buttons should only move the user forward (complete, break down, start) — no opt-out that quietly drops the action.
+- Open question for design: where does a genuinely undoable day go (replan via Assistant only, no one-tap defer)?
+
+## **2. Missing visibility — daily progress status bar + at-a-glance goals dashboard**
+
+- Add a **daily progress status bar** (today's completion visible wherever the user works).
+- Add/strengthen an **at-a-glance dashboard** showing the goals the user is actively working on.
+- Reason: "out of sight, out of mind" — active goals must stay visible so momentum survives busy days.
+- Implication for `design.html` and Phase 2/7: status bar component + dashboard goals-at-a-glance section are required, not optional.
+
+## **3. Task automation must be explicit and visible**
+
+Owner asked where the automation of tasks is, specifically:
+- **Calendar scheduling automation** (propose slots, create events + invites).
+- **Reminder automation** (contextual follow-through nudges, follow-up reminders).
+- **Email response automation** driven by the user's **personalized template, input, and voice** (drafts that sound like the user; user stays in control of send).
+- Implication: Phases 4–6 scope must stay prominent in plan and UI (Automations area + Assistant), not buried. Surface each automation with its source (template/voice/input) so the user trusts it.
+
