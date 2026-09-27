@@ -10,16 +10,24 @@ Core loop: **Goal → Breakdown → Action → Reminder → Completion → Progr
 - Each phase lists **concrete outputs** (schema, API, UI, AI behavior) and **acceptance criteria**.
 - Stack is not locked. Recommended default: web app (e.g. Next.js + Postgres + background jobs + LLM API + email/calendar OAuth). Phases are stack-agnostic.
 
+## Locked stack (local-first)
+
+- **Framework:** Next.js (App Router, TypeScript) — UI + API routes in one repo.
+- **Database:** SQLite via Prisma, file-based. **App & DB run locally for now** (`npm run dev`, no cloud DB).
+- **Authentication:** Auth.js (NextAuth) credentials provider, local sessions. OAuth later.
+- **File storage:** Local filesystem (`./storage/`, gitignored) behind a `Storage` interface (swap to S3 later).
+
 ---
 
 ## Phase 0 — Foundation
 
-**Goal:** Runnable repo, agreed data model, auth, deployable skeleton.
+**Goal:** Runnable repo, agreed data model, auth, deployable skeleton. App & DB run locally for now.
 
 **Outputs:**
-- `app/` scaffold: routing, `Today / Goals / Tasks / Calendar / Automations / Assistant` shells (empty states OK)
-- Auth (email/OAuth), per-user data isolation
-- DB schema v0: `users, goals, milestones, monthly_outcomes, weekly_objectives, daily_actions, tasks, task_links(goal_id), progress_events`
+- `app/` scaffold (Next.js): routing, `Today / Goals / Tasks / Calendar / Automations / Assistant` shells (empty states OK)
+- Auth (Auth.js credentials, local sessions), per-user data isolation
+- DB schema v0 on local SQLite via Prisma: `users, goals, milestones, monthly_outcomes, weekly_objectives, daily_actions, tasks, task_links(goal_id), progress_events`
+- Local file storage at `./storage/` (gitignored) behind `Storage` interface
 - CI: lint, typecheck, test, preview deploy
 - Seed script: 1 demo goal with full breakdown chain
 - `.env.example`, logging, error tracking

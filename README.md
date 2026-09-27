@@ -70,6 +70,14 @@ Calm, helpful, intelligent, encouraging, non-judgmental, practical, clear, perso
 5. Workflow automation
 
 Full spec: `Docx/Plannly-Product Requirements Document (PRD).md`
+Plan: `IMPLEMENTATION_PLAN.md`
+
+## Stack (local-first)
+
+- **Framework:** Next.js (App Router, TypeScript)
+- **Database:** SQLite via Prisma (file-based). **App & DB run locally for now.**
+- **Authentication:** Auth.js (NextAuth), credentials provider, local sessions
+- **File storage:** Local filesystem (`./storage/`), behind a swappable `Storage` interface
 
 ## Repo Status
 

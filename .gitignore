@@ -13,3 +13,13 @@ Thumbs.db
 .idea/
 # logs
 *.log
+# local-only (not in repo)
+ASSIGNMENTS -SS/
+# local app + db + storage (run locally for now)
+*.db
+*.sqlite
+*.sqlite-journal
+/prisma/*.db
+storage/
+uploads/
+.next/
