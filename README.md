@@ -72,12 +72,15 @@ Calm, helpful, intelligent, encouraging, non-judgmental, practical, clear, perso
 Full spec: `Docx/Plannly-Product Requirements Document (PRD).md`
 Plan: `IMPLEMENTATION_PLAN.md`
 
-## Stack (local-first)
+## Stack
 
-- **Framework:** Next.js (App Router, TypeScript)
-- **Database:** SQLite via Prisma (file-based). **App & DB run locally for now.**
-- **Authentication:** Auth.js (NextAuth), credentials provider, local sessions
-- **File storage:** Local filesystem (`./storage/`), behind a swappable `Storage` interface
+- **Framework:** Next.js (App Router, TypeScript) — `app.html` prototype stays untouched until migrated
+- **Database:** PostgreSQL via Supabase + Prisma ORM (`prisma/schema.prisma`)
+- **Authentication:** Auth.js/NextAuth with email (Resend magic link) + Google OAuth, `USER`/`ADMIN` roles
+- **File storage:** S3-compatible via `lib/storage.ts` (Cloudflare R2 or Supabase Storage S3 endpoint)
+- **Payments:** Paystack via provider interface in `lib/payments.ts` (add providers by implementing `PaymentProvider`)
+- **Email:** Resend (`lib/email.ts`) for transactional, reminders, approvals
+- **SMS/WhatsApp:** future; Phase 1 uses in-app notifications + email (`lib/notifications.ts`)
 
 ## Repo Status
 

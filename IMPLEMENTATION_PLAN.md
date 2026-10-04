@@ -10,12 +10,14 @@ Core loop: **Goal → Breakdown → Action → Reminder → Completion → Progr
 - Each phase lists **concrete outputs** (schema, API, UI, AI behavior) and **acceptance criteria**.
 - Stack is not locked. Recommended default: web app (e.g. Next.js + Postgres + background jobs + LLM API + email/calendar OAuth). Phases are stack-agnostic.
 
-## Locked stack (local-first)
+## Locked stack
 
-- **Framework:** Next.js (App Router, TypeScript) — UI + API routes in one repo.
-- **Database:** SQLite via Prisma, file-based. **App & DB run locally for now** (`npm run dev`, no cloud DB).
-- **Authentication:** Auth.js (NextAuth) credentials provider, local sessions. OAuth later.
-- **File storage:** Local filesystem (`./storage/`, gitignored) behind a `Storage` interface (swap to S3 later).
+- **Framework:** Next.js (App Router, TypeScript) — UI + API routes in one repo. Existing `app.html`/`design.html` stay untouched until migrated.
+- **Database:** PostgreSQL via Supabase + Prisma ORM (`prisma/schema.prisma`, pooled `DATABASE_URL` + `DIRECT_URL`).
+- **Authentication:** Auth.js (NextAuth) email (Resend magic link) + Google OAuth, `USER`/`ADMIN` roles (`lib/auth.ts`).
+- **File storage:** S3-compatible `Storage` port (`lib/storage.ts`) targeting Cloudflare R2 or Supabase Storage S3 endpoint.
+- **Payments:** Paystack behind `PaymentProvider` interface (`lib/payments.ts`).
+- **Email:** Resend (`lib/email.ts`); Phase 1 notifications are in-app + email (`lib/notifications.ts`). SMS/WhatsApp deferred.
 
 ---
 
